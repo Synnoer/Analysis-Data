@@ -9,7 +9,7 @@ This project provides an interactive **E-Commerce Sales Analysis Dashboard** usi
 ### **1. Clone the Repository**
 ```sh
 git clone https://github.com/Synnoer/Analysis-Data.git
-cd Analysis DAta
+cd Analysis Data
 ```
 
 ### **2. Create a Virtual Environment (Windows)**
