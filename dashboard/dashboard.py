@@ -10,11 +10,11 @@ st.title("E-Commerce Sales Analysis")
 # Load datasets
 @st.cache_data  # Cache to optimize performance
 def load_data():
-    orders = pd.read_csv("orders_dataset.csv")
-    customers = pd.read_csv("customers_dataset.csv")
-    order_items = pd.read_csv("order_items_dataset.csv")
-    products = pd.read_csv("products_dataset.csv")
-    category_translations = pd.read_csv("product_category_name_translation.csv")
+    orders = pd.read_csv("data/orders_dataset.csv")
+    customers = pd.read_csv("data/customers_dataset.csv")
+    order_items = pd.read_csv("data/order_items_dataset.csv")
+    products = pd.read_csv("data/products_dataset.csv")
+    category_translations = pd.read_csv("data/product_category_name_translation.csv")
     return orders, customers, order_items, products, category_translations
 
 orders, customers, order_items, products, category_translations = load_data()
