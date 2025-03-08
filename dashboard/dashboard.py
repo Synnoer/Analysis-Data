@@ -24,13 +24,13 @@ st.write("Data Loaded Successfully! Here's a preview:")
 # Sidebar Filters
 st.sidebar.header("Filters")
 
-# Date range filter (for sales_df only)
+# Date range filter
 min_date = pd.to_datetime("2016-01-01")
 max_date = pd.to_datetime("2018-12-31")
 date_range = st.sidebar.date_input("Select Date Range:", [min_date, max_date], min_value=min_date, max_value=max_date)
 
-# Category filter (for order_items_df only)
-all_categories = ["All"] + order_items.merge(products, on="product_id").merge(category_translations, on="product_category_name", how="left")["product_category_name_english"].dropna().unique().tolist()
+# Category filter
+all_categories = order_items.merge(products, on="product_id").merge(category_translations, on="product_category_name", how="left")["product_category_name_english"].dropna().unique().tolist()
 selected_category1 = st.sidebar.selectbox("Select First Product Category:", all_categories)
 selected_category2 = st.sidebar.selectbox("Select Second Product Category:", all_categories)
 
@@ -77,7 +77,7 @@ plt.ylabel("Total Sales")
 st.pyplot(fig)
 
 # Heatmap of Category Pairs
-if selected_category1 != "All" and selected_category2 != "All":
+if selected_category1 and selected_category2:
     st.subheader(f"Heatmap of {selected_category1} and {selected_category2}")
     category_pairs_counter = Counter()
     for order_products in order_items.merge(products, on="product_id").merge(category_translations, on="product_category_name", how="left").groupby("order_id")["product_category_name_english"].apply(list):
